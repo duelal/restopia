@@ -2,9 +2,7 @@
 const svg = document.getElementById('diagram');
 const svgNS = "http://www.w3.org/2000/svg";
 
-// ドラッグ状態管理
-let draggedElement = null;
-let offset = { x: 0, y: 0 };
+// 表示状態管理
 let showLabels = true;
 
 // グループの初期配置データ
@@ -148,52 +146,7 @@ function renderDiagram() {
         });
 
         svg.appendChild(groupG);
-
-        // ドラッグイベントの設定
-        setupDragEvents(groupG, groupIndex);
     });
-}
-
-// ドラッグイベントの設定
-function setupDragEvents(element, groupIndex) {
-    element.addEventListener('mousedown', (e) => startDrag(e, groupIndex));
-    element.addEventListener('touchstart', (e) => startDrag(e, groupIndex));
-}
-
-function startDrag(e, groupIndex) {
-    e.preventDefault();
-    draggedElement = groupIndex;
-
-    const clientX = e.clientX || e.touches[0].clientX;
-    const clientY = e.clientY || e.touches[0].clientY;
-
-    offset.x = clientX - groupPositions[groupIndex].x;
-    offset.y = clientY - groupPositions[groupIndex].y;
-
-    document.addEventListener('mousemove', drag);
-    document.addEventListener('touchmove', drag);
-    document.addEventListener('mouseup', stopDrag);
-    document.addEventListener('touchend', stopDrag);
-}
-
-function drag(e) {
-    if (draggedElement === null) return;
-
-    const clientX = e.clientX || e.touches[0].clientX;
-    const clientY = e.clientY || e.touches[0].clientY;
-
-    groupPositions[draggedElement].x = clientX - offset.x;
-    groupPositions[draggedElement].y = clientY - offset.y;
-
-    renderDiagram();
-}
-
-function stopDrag() {
-    draggedElement = null;
-    document.removeEventListener('mousemove', drag);
-    document.removeEventListener('touchmove', drag);
-    document.removeEventListener('mouseup', stopDrag);
-    document.removeEventListener('touchend', stopDrag);
 }
 
 // イベントリスナーの設定

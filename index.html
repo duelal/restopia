@@ -3,36 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>外食チェーン相関図</title>
+    <title>restopia - レストラン情報ポータル</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .top-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .top-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .top-header h1 {
+            font-size: 3em;
+            margin: 0 0 10px 0;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .top-header p {
+            font-size: 1.2em;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .section-card h2 {
+            color: #667eea;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .section-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .section-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>外食チェーン相関図</h1>
-            <p class="subtitle">企業グループごとの関係を可視化</p>
+    <div class="top-container">
+        <header class="top-header">
+            <h1>restopia</h1>
+            <p>レストラン情報の総合ポータルサイト</p>
         </header>
 
-        <div class="controls">
-            <button id="resetBtn">配置をリセット</button>
-            <button id="toggleLabelsBtn">ラベル表示切替</button>
+        <div class="sections-grid">
+            <a href="correlation-diagram.html" class="section-card">
+                <div class="section-icon">🏢</div>
+                <h2>外食チェーン相関図</h2>
+                <p>日本の主要な外食チェーン店の企業グループ関係を視覚化。インタラクティブな相関図で企業の繋がりを理解できます。</p>
+            </a>
+
+            <a href="reviews.html" class="section-card">
+                <div class="section-icon">⭐</div>
+                <h2>レストランレビュー</h2>
+                <p>ユーザーによる詳細なレストランレビューと評価。実際の体験に基づいた情報を共有します。</p>
+            </a>
+
+            <a href="menu-explorer.html" class="section-card">
+                <div class="section-icon">📋</div>
+                <h2>メニュー検索</h2>
+                <p>各チェーン店のメニューを横断的に検索。料理名、価格、カロリーなどから探せます。</p>
+            </a>
+
+            <a href="trends.html" class="section-card">
+                <div class="section-icon">📊</div>
+                <h2>トレンド分析</h2>
+                <p>外食業界の最新トレンドとデータ分析。人気メニューや業界動向をチェックできます。</p>
+            </a>
+
+            <a href="coupons.html" class="section-card">
+                <div class="section-icon">🎫</div>
+                <h2>お得情報</h2>
+                <p>各チェーン店のクーポンやキャンペーン情報をまとめて確認。お得に外食を楽しめます。</p>
+            </a>
+
+            <a href="map.html" class="section-card">
+                <div class="section-icon">🗺️</div>
+                <h2>店舗マップ</h2>
+                <p>近くのレストランを地図上で検索。現在地からの距離や営業時間も確認できます。</p>
+            </a>
+
+            <a href="satisfaction-ranking.html" class="section-card">
+                <div class="section-icon">🏆</div>
+                <h2>レストラン満足度ランキング</h2>
+                <p>ユーザー評価に基づく満足度ランキング。人気のレストランチェーンをチェックできます。</p>
+            </a>
         </div>
 
-        <div id="diagram-container">
-            <svg id="diagram"></svg>
-        </div>
-
-        <div class="legend">
-            <h3>凡例</h3>
-            <div id="legend-items"></div>
-        </div>
-
-        <footer>
-            <p>ドラッグ＆ドロップで位置を調整できます</p>
+        <footer style="text-align: center; color: #999; padding: 20px;">
+            <p>&copy; 2024 restopia - All rights reserved</p>
         </footer>
     </div>
-
-    <script src="data.js"></script>
-    <script src="main.js"></script>
 </body>
 </html>

@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レストラン満足度ランキング - restopia</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .ranking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .ranking-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .ranking-header .site-title {
+            font-size: 2em;
+            font-weight: 300;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .ranking-header h1 {
+            font-size: 2.5em;
+            margin: 10px 0;
+        }
+
+        .ranking-header .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .ranking-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .ranking-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .ranking-section h2 {
+            font-size: 1.8em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .ranking-section.best h2 {
+            color: #27ae60;
+            border-bottom-color: #27ae60;
+        }
+
+        .ranking-section.jcsi h2 {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .ranking-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .rank-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .rank-number.gold {
+            color: #FFD700;
+        }
+
+        .rank-number.silver {
+            color: #C0C0C0;
+        }
+
+        .rank-number.bronze {
+            color: #CD7F32;
+        }
+
+        .rank-number.top {
+            color: #27ae60;
+        }
+
+        .restaurant-name {
+            flex: 1;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        .restaurant-votes {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .category-tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #999;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .ranking-sections {
+                grid-template-columns: 1fr;
+            }
+
+            .ranking-header h1 {
+                font-size: 1.8em;
+            }
+
+            .rank-number {
+                font-size: 1.2em;
+                min-width: 40px;
+            }
+
+            .restaurant-name {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ranking-container">
+        <header class="ranking-header">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <div class="site-title">restopia</div>
+            </a>
+            <h1>レストラン満足度ランキング</h1>
+            <p class="subtitle">2024年最新版 - ユーザー評価と顧客満足度調査に基づく</p>
+        </header>
+
+        <div class="info-box">
+            <h3>📊 データについて</h3>
+            <p>このランキングは、2024年に実施された複数の調査データを基にしています：</p>
+            <ul>
+                <li><strong>好きな外食チェーン店ランキング</strong>：10〜50代の6,204名を対象にした調査（2024年9月実施）</li>
+                <li><strong>日本版顧客満足度指数（JCSI）</strong>：日本生産性本部による公式調査（2024年度）</li>
+            </ul>
+        </div>
+
+        <div class="ranking-sections">
+            <div class="ranking-section best">
+                <h2>🏆 好きな外食チェーン店 TOP10</h2>
+                <p style="color: #666; margin-bottom: 20px;">幅広い年代から支持される人気チェーン店</p>
+
+                <div class="ranking-item">
+                    <div class="rank-number gold">1</div>
+                    <div class="restaurant-name">サイゼリヤ</div>
+                    <div class="restaurant-votes">326票</div>
+                </div>
+
+                <div class="ranking-item">
+                    <div class="rank-number silver">2</div>
+                    <div class="restaurant-name">マクドナルド</div>
+                    <div class="restaurant-votes">324票</div>
+                </div>
+
+                <div class="ranking-item">
+                    <div class="rank-number bronze">3</div>
+                    <div class="restaurant-name">ケンタッキーフライドチキン</div>
+                    <div class="restaurant-votes">281票</div>
+                </div>
+
+                <div class="ranking-item">
+                    <div class="rank-number">4</div>
+                    <div class="restaurant-name">モスバーガー</div>
+                    <div class="restaurant-votes">267票</div>
+                </div>
+
+                <div class="ranking-item">
+                    <div class="rank-number">5</div>
+                    <div class="restaurant-name">餃子の王将</div>
+                    <div class="restaurant-votes">257票</div>
+                </div>
+
+                <div class="ranking-item">
+                    <div class="rank-number">6</div>
+                    <div class="restaurant-name">びっくりドンキー</div>
+                    <div class="restaurant-votes">214票</div>
+                </div>
+
+                <div class="ranking-item">
+                    <div class="rank-number">7</div>
+                    <div class="restaurant-name">くら寿司</div>
+                    <div class="restaurant-votes">210票</div>
+                </div>
+
+                <div class="ranking-item">
+                    <div class="rank-number">8</div>
+                    <div class="restaurant-name">CoCo壱番屋</div>
+                    <div class="restaurant-votes">185票</div>
+                </div>
+
+                <div class="ranking-item">
+                    <div class="rank-number">9</div>
+                    <div class="restaurant-name">はま寿司</div>
+                    <div class="restaurant-votes">178票</div>
+                </div>
+
+                <div class="ranking-item">
+                    <div class="rank-number">10</div>
+                    <div class="restaurant-name">スシロー / 丸亀製麺</div>
+                    <div class="restaurant-votes">173票（同率）</div>
+                </div>
+            </div>
+
+            <div class="ranking-section jcsi">
+                <h2>⭐ 顧客満足度指数（JCSI）TOP3</h2>
+                <p style="color: #666; margin-bottom: 20px;">日本生産性本部による公式調査結果</p>
+
+                <h3 style="color: #667eea; margin-top: 25px; margin-bottom: 15px;">外食部門</h3>
+
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: #555; margin-bottom: 10px;">顧客満足度</h4>
+                    <div class="ranking-item">
+                        <div class="rank-number top">1</div>
+                        <div class="restaurant-name">サイゼリヤ</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="rank-number top">2</div>
+                        <div class="restaurant-name">モスバーガー</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="rank-number top">3</div>
+                        <div class="restaurant-name">丸亀製麺</div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: #555; margin-bottom: 10px;">推奨意向（おすすめ度）</h4>
+                    <div class="ranking-item">
+                        <div class="rank-number top">1</div>
+                        <div class="restaurant-name">木曽路</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="rank-number top">2</div>
+                        <div class="restaurant-name">サイゼリヤ</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="rank-number top">3</div>
+                        <div class="restaurant-name">モスバーガー</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="color: #555; margin-bottom: 10px;">感動指標</h4>
+                    <div class="ranking-item">
+                        <div class="rank-number top">1</div>
+                        <div class="restaurant-name">木曽路</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="rank-number top">2</div>
+                        <div class="restaurant-name">サイゼリヤ</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="rank-number top">3</div>
+                        <div class="restaurant-name">びっくりドンキー</div>
+                    </div>
+                </div>
+
+                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">カフェ部門</h3>
+
+                <div>
+                    <h4 style="color: #555; margin-bottom: 10px;">顧客満足度</h4>
+                    <div class="ranking-item">
+                        <div class="rank-number top">1</div>
+                        <div class="restaurant-name">スターバックス</div>
+                    </div>
+                    <div class="ranking-item">
+                        <div class="rank-number top">2</div>
+                        <div class="restaurant-name">ドトール / ミスタードーナツ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ranking-section" style="background: #ffebee; margin-bottom: 30px;">
+            <h2 style="color: #c62828; border-bottom-color: #c62828;">⚠️ 顧客満足率ワーストランキング</h2>
+            <p style="color: #666; margin-bottom: 20px;">ダイヤモンド調査（2017年）- 満足度の低かったチェーン店</p>
+
+            <div class="ranking-item" style="background: #ffcdd2;">
+                <div class="rank-number" style="color: #c62828;">1</div>
+                <div class="restaurant-name">笑笑</div>
+                <div class="restaurant-votes">満足率 22.0%</div>
+            </div>
+
+            <div class="ranking-item" style="background: #ffcdd2;">
+                <div class="rank-number" style="color: #c62828;">2</div>
+                <div class="restaurant-name">村さ来</div>
+                <div class="restaurant-votes">居酒屋チェーン</div>
+            </div>
+
+            <div class="ranking-item" style="background: #ffcdd2;">
+                <div class="rank-number" style="color: #c62828;">3</div>
+                <div class="restaurant-name">白木屋</div>
+                <div class="restaurant-votes">居酒屋チェーン</div>
+            </div>
+
+            <div class="ranking-item" style="background: #ffcdd2;">
+                <div class="rank-number" style="color: #c62828;">4</div>
+                <div class="restaurant-name">魚民</div>
+                <div class="restaurant-votes">居酒屋チェーン</div>
+            </div>
+
+            <div class="ranking-item" style="background: #ffcdd2;">
+                <div class="rank-number" style="color: #c62828;">5</div>
+                <div class="restaurant-name">庄や</div>
+                <div class="restaurant-votes">居酒屋チェーン</div>
+            </div>
+
+            <div class="ranking-item" style="background: #ffcdd2;">
+                <div class="rank-number" style="color: #c62828;">6</div>
+                <div class="restaurant-name">和民</div>
+                <div class="restaurant-votes">居酒屋チェーン</div>
+            </div>
+
+            <div class="ranking-item" style="background: #ffcdd2;">
+                <div class="rank-number" style="color: #c62828;">7</div>
+                <div class="restaurant-name">つぼ八</div>
+                <div class="restaurant-votes">居酒屋チェーン</div>
+            </div>
+
+            <div class="ranking-item" style="background: #ffcdd2;">
+                <div class="rank-number" style="color: #c62828;">8</div>
+                <div class="restaurant-name">養老乃瀧</div>
+                <div class="restaurant-votes">居酒屋チェーン</div>
+            </div>
+
+            <div class="ranking-item" style="background: #ffcdd2;">
+                <div class="rank-number" style="color: #c62828;">9</div>
+                <div class="restaurant-name">千年の宴</div>
+                <div class="restaurant-votes">居酒屋チェーン</div>
+            </div>
+
+            <div class="ranking-item" style="background: #ffcdd2;">
+                <div class="rank-number" style="color: #c62828;">10</div>
+                <div class="restaurant-name">目利きの銀次</div>
+                <div class="restaurant-votes">居酒屋チェーン</div>
+            </div>
+
+            <div class="info-box" style="background: #fff3e0; border-left-color: #ff6f00; margin-top: 20px;">
+                <h4 style="color: #e65100; margin-top: 0;">⚠️ 注意事項</h4>
+                <p style="font-size: 0.9em; margin: 0;">このワーストランキングは2017年のデータであり、やや古い情報です。その後、各チェーンは改善努力を行っている可能性があります。また、居酒屋業界全体がコロナ禍の影響を受け、業態変更や改善を進めています。</p>
+            </div>
+        </div>
+
+        <div class="info-box" style="background: #fff3e0; border-left-color: #ff9800;">
+            <h3 style="color: #f57c00;">💡 ランキングから見える傾向</h3>
+            <ul>
+                <li><strong>サイゼリヤの強さ</strong>：人気ランキング1位、JCSI各指標でも上位に入る圧倒的な支持</li>
+                <li><strong>コスパの良さ</strong>：上位にはコストパフォーマンスが高いと評価されるチェーンが多数</li>
+                <li><strong>専門性</strong>：回転寿司やハンバーガーなど、特定ジャンルに特化したチェーンが人気</li>
+                <li><strong>高級路線の木曽路</strong>：推奨意向と感動指標で1位を獲得し、特別な体験を提供</li>
+                <li><strong>総合居酒屋の課題</strong>：ワーストランキングは居酒屋チェーンが多数を占め、専門特化型への転換が課題</li>
+            </ul>
+        </div>
+
+        <div class="category-tags">
+            <div class="category-tag">ファミレス</div>
+            <div class="category-tag">ハンバーガー</div>
+            <div class="category-tag">回転寿司</div>
+            <div class="category-tag">カレー</div>
+            <div class="category-tag">中華</div>
+            <div class="category-tag">和食</div>
+            <div class="category-tag">カフェ</div>
+        </div>
+
+        <footer>
+            <p><a href="index.html">← トップページに戻る</a></p>
+            <p style="margin-top: 10px; font-size: 0.9em;">データ出典：ランキングー！調査（2024年9月）、日本生産性本部 JCSI（2024年度）、ダイヤモンド顧客満足率調査（2017年）</p>
+        </footer>
+    </div>
+</body>
+</html>

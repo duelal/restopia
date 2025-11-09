@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外食チェーン相関図</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="site-title">restopia</div>
+            <h1>外食チェーン相関図</h1>
+            <p class="subtitle">企業グループごとの関係を可視化</p>
+        </header>
+
+        <div class="controls">
+            <button id="resetBtn">配置をリセット</button>
+            <button id="toggleLabelsBtn">ラベル表示切替</button>
+        </div>
+
+        <div id="diagram-container">
+            <svg id="diagram"></svg>
+        </div>
+
+        <div class="legend">
+            <h3>凡例</h3>
+            <div id="legend-items"></div>
+        </div>
+
+        <footer>
+            <p><a href="index.html">トップページに戻る</a></p>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
